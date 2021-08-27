@@ -17,7 +17,9 @@ class SetGameViewModel: ObservableObject {
             SetGameViewModel.testShapes[cardIndex]
         }
     }
-        
+    
+    
+    
     // MARK: - Access to the Model
     
     var cards: Array<SetGame<String>.Card> {
