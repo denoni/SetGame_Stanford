@@ -8,14 +8,45 @@
 import SwiftUI
 
 struct ContentView: View {
+    @ObservedObject var viewModel: SetGameViewModel
+    
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: 85))]) {
+            ForEach(viewModel.cards) { card in
+                CardView(card: card)
+                    .aspectRatio(2/3, contentMode: .fit)
+                    .onTapGesture {
+                    viewModel.choose(card)
+                    }
+            }
+        }.padding()
+        .foregroundColor(.red)
     }
 }
 
+struct CardView: View {
+    var card: SetGame<String>.Card
+    
+    var body: some View {
+        ZStack {
+                RoundedRectangle(cornerRadius: 25)
+                    .fill()
+                    .foregroundColor(.white)
+                RoundedRectangle(cornerRadius: 25)
+                    .strokeBorder(lineWidth: 4)
+                Text(card.content)
+                    .font(Font.largeTitle)
+        }
+    }
+}
+
+
+
+// MARK: - Preview
+
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        let setGame = SetGameViewModel()
+        ContentView(viewModel: setGame)
     }
 }
