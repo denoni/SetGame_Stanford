@@ -16,10 +16,10 @@ struct SetGame<SetGameCardContent> {
         }
     }
     
-    init(numberOfCards: Int,
-         createCardContent: (Int) -> SetGameCardContent) {
+    init(createCardContent: (Int) -> SetGameCardContent) {
         cards = Array<Card>()
-        for cardIndex in 0..<numberOfCards {
+        // 81 = Size of a standard Set deck
+        for cardIndex in 0 ..< 3 {
             let content = createCardContent(cardIndex)
             cards.append(Card(content: content, id: cardIndex))
         }

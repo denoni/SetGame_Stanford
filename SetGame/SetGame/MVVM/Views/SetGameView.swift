@@ -25,7 +25,7 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    var card: SetGame<String>.Card
+    var card: SetGame<AnyView>.Card
     
     var body: some View {
         ZStack {
@@ -34,8 +34,8 @@ struct CardView: View {
                     .foregroundColor(.white)
                 RoundedRectangle(cornerRadius: 25)
                     .strokeBorder(lineWidth: 4)
-                Text(card.content)
-                    .font(Font.largeTitle)
+                card.content
+                    .padding()
         }
     }
 }
