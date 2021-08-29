@@ -12,7 +12,7 @@ struct ContentView: View {
     
     var body: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 85))]) {
-            ForEach(viewModel.cards) { card in
+            ForEach(viewModel.cardsInTable) { card in
                 CardView(color: card.content.color,
                          quantity: card.content.quantity,
                          fillPattern: card.content.filling,

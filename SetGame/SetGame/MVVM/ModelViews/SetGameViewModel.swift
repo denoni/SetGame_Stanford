@@ -38,8 +38,8 @@ class SetGameViewModel: ObservableObject {
     
     // MARK: - Access to the Model
     
-    var cards: Array<SetGame<SetGameCardContent>.Card> {
-        setGameModel.cards
+    var cardsInTable: Array<SetGame<SetGameCardContent>.Card> {
+        setGameModel.cardsInTable
     }
     
     
