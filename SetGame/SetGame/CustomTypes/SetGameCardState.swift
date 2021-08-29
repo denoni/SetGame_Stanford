@@ -10,5 +10,6 @@ import Foundation
 struct SetGameCardState {
     var isMatched = false
     var isSelected = false
+    var isWronglySelected = false
     var wasSeen = false
 }
