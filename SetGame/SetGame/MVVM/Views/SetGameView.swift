@@ -13,7 +13,10 @@ struct ContentView: View {
     var body: some View {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 85))]) {
             ForEach(viewModel.cards) { card in
-                CardView(card: card)
+                CardView(color: card.content.color,
+                         quantity: card.content.quantity,
+                         fillPattern: card.content.filling,
+                         shape: card.content.shape)
                     .aspectRatio(2/3, contentMode: .fit)
                     .onTapGesture {
                     viewModel.choose(card)
@@ -25,17 +28,26 @@ struct ContentView: View {
 }
 
 struct CardView: View {
-    var card: SetGame<AnyView>.Card
+    var color: SetGameTypes.CardColor
+    var quantity: SetGameTypes.CardQuantity
+    var fillPattern: SetGameTypes.CardFilling
+    var shape: SetGameTypes.CardShape
+    var cardView = SetGameCardBuilder()
     
     var body: some View {
-        ZStack {
-                RoundedRectangle(cornerRadius: 25)
-                    .fill()
-                    .foregroundColor(.white)
-                RoundedRectangle(cornerRadius: 25)
-                    .strokeBorder(lineWidth: 4)
-                card.content
-                    .padding()
+        GeometryReader { geometry in
+            ZStack {
+                    RoundedRectangle(cornerRadius: 25)
+                        .fill()
+                        .foregroundColor(.white)
+                    RoundedRectangle(cornerRadius: 25)
+                        .strokeBorder(lineWidth: 4)
+                cardView.buildShape(shape: shape,
+                                    color: color,
+                                    quantity: quantity,
+                                    fillPattern: fillPattern)
+            }
+            
         }
     }
 }
