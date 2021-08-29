@@ -40,15 +40,11 @@ struct CardView: View {
     var body: some View {
         GeometryReader { geometry in
             ZStack {
-                    RoundedRectangle(cornerRadius: 25)
-                        .fill()
-                        .foregroundColor(.white)
-                    RoundedRectangle(cornerRadius: 25)
-                        .strokeBorder(lineWidth: 4)
                 cardView.buildShape(shape: shape,
                                     color: color,
                                     quantity: quantity,
                                     fillPattern: fillPattern)
+                    .cardify(isSelected: state.isSelected)
             }
             
         }
