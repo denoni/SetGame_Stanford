@@ -14,7 +14,8 @@ struct ContentView: View {
         // 120 -> Cards fill the screen in a better way
         LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
             ForEach(viewModel.cardsInTable) { card in
-                CardView(color: card.content.color,
+                CardView(state: card.state,
+                         color: card.content.color,
                          quantity: card.content.quantity,
                          fillPattern: card.content.filling,
                          shape: card.content.shape)
@@ -29,6 +30,7 @@ struct ContentView: View {
 }
 
 struct CardView: View {
+    var state: SetGameCardState
     var color: SetGameTypes.CardColor
     var quantity: SetGameTypes.CardQuantity
     var fillPattern: SetGameTypes.CardFilling
