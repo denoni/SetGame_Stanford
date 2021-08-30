@@ -42,6 +42,10 @@ class SetGameViewModel: ObservableObject {
         setGameModel.cardsInTable
     }
     
+    var grabMoreCardsButtonIsDisabled: Bool {
+        setGameModel.grabCardsIsDisabled
+    }
+    
     
     
     // MARK: - Intents

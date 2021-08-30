@@ -10,6 +10,9 @@ import SwiftUI
 struct RoundedButton: View {
     var text: String
     var action: () -> Void
+    var disabled = false
+    
+    // TODO: Make cards dark sensitive
     
     var body: some View {
         Button(action: action) {
@@ -20,8 +23,9 @@ struct RoundedButton: View {
                     .foregroundColor(Color.white)
                     .background(Color.black)
                     .cornerRadius(buttonCornerRadius)
+                    .opacity(disabled ? 0.3 : 1)
             }
-        }
+        }.disabled(disabled)
     }
 }
 

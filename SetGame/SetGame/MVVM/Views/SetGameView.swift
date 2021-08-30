@@ -29,7 +29,8 @@ struct ContentView: View {
                                 }
                         })
             RoundedButton.init(text: grabMoreCardsButtonText,
-                               action: viewModel.grabThreeNewCards)
+                               action: viewModel.grabThreeNewCards,
+                               disabled: viewModel.grabMoreCardsButtonIsDisabled)
         }.padding(.horizontal, viewHorizontalPadding)
     }
 }
