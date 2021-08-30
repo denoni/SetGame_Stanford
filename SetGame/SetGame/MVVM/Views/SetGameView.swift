@@ -44,7 +44,8 @@ struct CardView: View {
                                     color: color,
                                     quantity: quantity,
                                     fillPattern: fillPattern)
-                    .cardify(isSelected: state.isSelected)
+                    .cardify(isSelected: state.isSelected,
+                             isWronglySelected: state.isWronglySelected)
             }
             
         }
