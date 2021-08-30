@@ -55,11 +55,22 @@ class SetGameViewModel: ObservableObject {
     }
     
     func startNewGame(cardsInTable: Array<SetGame<SetGameCardContent>.Card>) {
+        for cardIndex in cardsInTable.indices {
+            modifyWasNewlyGrabbed(card: setGameModel.cardsInTable[cardIndex])
+        }
         setGameModel = SetGameViewModel.createSetGame()
     }
 
     func grabThreeNewCards() {
         setGameModel.grabThreeNewCards()
+    }
+    
+    func modifyWasNewlyGrabbed(card: SetGame<SetGameCardContent>.Card) {
+        
+        let showCardsAnimationDelay = 0.3
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + showCardsAnimationDelay) {
+            self.setGameModel.modifyWasNewlyGrabbed(card: card) }
     }
     
 }

@@ -38,6 +38,7 @@ struct SetGame<SetGameContent> {
         
         cardsInTable = Array(firstTwelveCards)
         for cardIndex in cardsInTable.indices {
+            cardsInTable[cardIndex].state.wasNewlyGrabbed = true
             cardsInTable[cardIndex].state.wasSeen = true
         }
     }
@@ -48,8 +49,14 @@ struct SetGame<SetGameContent> {
         }
     }
     
+    mutating func modifyWasNewlyGrabbed(card: Card) {
+        if let cardIndex = cardsInTable.firstIndex( where: { $0.id == card.id}) {
+            cardsInTable[cardIndex].state.wasNewlyGrabbed = false
+        }
+    }
+    
     mutating func choose(_ card: Card) {
-        if let chosenIndex = cardsInTable.firstIndex(where: { $0.id == card.id}) {
+        if let chosenIndex = cardsInTable.firstIndex( where: { $0.id == card.id}) {
             
             for cardIndex in cardsInTable.indices {
                 cardsInTable[cardIndex].state.isWronglySelected = false

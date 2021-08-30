@@ -12,4 +12,5 @@ struct SetGameCardState {
     var isSelected = false
     var isWronglySelected = false
     var wasSeen = false
+    var wasNewlyGrabbed = true
 }

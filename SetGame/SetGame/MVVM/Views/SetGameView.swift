@@ -24,8 +24,11 @@ struct ContentView: View {
                                      fillPattern: card.content.filling,
                                      shape: card.content.shape)
                                 .padding(cardPadding)
+                                .onAppear(perform: { viewModel.modifyWasNewlyGrabbed(card: card) })
                                 .onTapGesture {
-                                viewModel.choose(card)
+                                    withAnimation(.easeInOut) {
+                                        viewModel.choose(card)
+                                    }
                                 }
                         })
             RoundedButton.init(text: grabMoreCardsButtonText,
@@ -45,15 +48,17 @@ struct CardView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            ZStack {
-                cardView.buildShape(shape: shape,
-                                    color: color,
-                                    quantity: quantity,
-                                    fillPattern: fillPattern)
-                    .cardify(isSelected: state.isSelected,
-                             isWronglySelected: state.isWronglySelected)
-            }
-            
+            cardView.buildShape(shape: shape,
+                                color: color,
+                                quantity: quantity,
+                                fillPattern: fillPattern)
+            .cardify(isSelected: state.isSelected,
+                     isWronglySelected: state.isWronglySelected)
+            .opacity(state.wasNewlyGrabbed ? 0 : 1).animation(.spring())
+            .offset(
+                x: state.wasNewlyGrabbed ? getRandomValue(forSize:geometry.size.width) : 0,
+                y: state.wasNewlyGrabbed ? getRandomValue(forSize:geometry.size.height) : 0
+            ).animation(.spring())
         }
     }
 }
@@ -69,7 +74,10 @@ fileprivate let viewHorizontalPadding: CGFloat = 30
 fileprivate let newGameButtonText: String = "New Game!"
 fileprivate let grabMoreCardsButtonText: String = "Grab 3 more cards"
 
-
+func getRandomValue(forSize size: CGFloat) -> CGFloat {
+    let minimumOffSet = size * 5
+    return CGFloat.random(in: -minimumOffSet * 2...minimumOffSet * 2)
+}
 
 // MARK: - Preview
 
