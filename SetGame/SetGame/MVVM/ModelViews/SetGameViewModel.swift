@@ -49,4 +49,13 @@ class SetGameViewModel: ObservableObject {
     func choose(_ card: SetGame<SetGameCardContent>.Card) {
         setGameModel.choose(card)
     }
+    
+    func startNewGame(cardsInTable: Array<SetGame<SetGameCardContent>.Card>) {
+        setGameModel = SetGameViewModel.createSetGame()
+    }
+
+    func grabThreeNewCards() {
+        setGameModel.grabThreeNewCards()
+    }
+    
 }

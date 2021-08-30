@@ -41,17 +41,17 @@ struct Cardify: ViewModifier {
 
 // MARK: - Constants
 
-let cornerRadius: CGFloat = 25.0
-let cardBackgroundColor = Color.white
+fileprivate let cornerRadius: CGFloat = 25.0
+fileprivate let cardBackgroundColor = Color.white
 
-let selectedBorderLineWidth: CGFloat = 6.0
-let selectedBorderColor = Color.green
+fileprivate let selectedBorderLineWidth: CGFloat = 6.0
+fileprivate let selectedBorderColor = Color.green
 
-let unselectedBorderLineWidth: CGFloat = 3.0
-let unselectedBorderColor = Color.gray
+fileprivate let unselectedBorderLineWidth: CGFloat = 3.0
+fileprivate let unselectedBorderColor = Color.gray
 
-let wronglySelectedBorderColor = Color.red
-let wronglySelectedBackgroundColor = Color.red.opacity(0.2)
+fileprivate let wronglySelectedBorderColor = Color.red
+fileprivate let wronglySelectedBackgroundColor = Color.red.opacity(0.2)
 
 
 

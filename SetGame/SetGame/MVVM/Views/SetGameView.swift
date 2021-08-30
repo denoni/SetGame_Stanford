@@ -11,21 +11,27 @@ struct ContentView: View {
     @ObservedObject var viewModel: SetGameViewModel
     
     var body: some View {
-        // 120 -> Cards fill the screen in a better way
-        LazyVGrid(columns: [GridItem(.adaptive(minimum: 120))]) {
-            ForEach(viewModel.cardsInTable) { card in
-                CardView(state: card.state,
-                         color: card.content.color,
-                         quantity: card.content.quantity,
-                         fillPattern: card.content.filling,
-                         shape: card.content.shape)
-                    .aspectRatio(2/3, contentMode: .fit)
-                    .onTapGesture {
-                    viewModel.choose(card)
-                    }
+        VStack {
+            RoundedButton.init(text: newGameButtonText,
+                               action: { viewModel
+                                    .startNewGame(cardsInTable: viewModel.cardsInTable)
+                               })
+            LazyVGrid(columns: [GridItem(.adaptive(minimum: minimumGridItemSize))]) {
+                ForEach(viewModel.cardsInTable) { card in
+                    CardView(state: card.state,
+                             color: card.content.color,
+                             quantity: card.content.quantity,
+                             fillPattern: card.content.filling,
+                             shape: card.content.shape)
+                        .aspectRatio(cardAspectRatio, contentMode: .fit)
+                        .onTapGesture {
+                        viewModel.choose(card)
+                        }
+                }
             }
+            RoundedButton.init(text: grabMoreCardsButtonText,
+                               action: viewModel.grabThreeNewCards)
         }.padding()
-        .foregroundColor(.red)
     }
 }
 
@@ -51,6 +57,15 @@ struct CardView: View {
         }
     }
 }
+
+
+
+// MARK: - Constants
+
+fileprivate let minimumGridItemSize: CGFloat = 120
+fileprivate let cardAspectRatio: CGFloat = 5/6
+fileprivate let newGameButtonText: String = "New Game!"
+fileprivate let grabMoreCardsButtonText: String = "Grab 3 more cards"
 
 
 

@@ -12,6 +12,10 @@ struct SetGame<SetGameContent> {
     private(set) var cardsInTable: Array<Card> = []
     private(set) var currentSelectedCards: Array<Card> = []
     
+    var grabCardsIsDisabled: Bool {
+        deckOfCards.count == 0 || cardsInTable.count > 21
+    }
+    
     init(createCardContent: (Int) -> SetGameCardContent) {
         cardsInTable = Array<Card>()
         // 81 = Size of a standard Set deck
@@ -35,6 +39,12 @@ struct SetGame<SetGameContent> {
         cardsInTable = Array(firstTwelveCards)
         for cardIndex in cardsInTable.indices {
             cardsInTable[cardIndex].state.wasSeen = true
+        }
+    }
+    
+    mutating func grabThreeNewCards() {
+        if grabCardsIsDisabled == false {
+            for _ in 0 ..< 3 { cardsInTable.append(deckOfCards.removeFirst()) }
         }
     }
     
