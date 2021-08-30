@@ -13,25 +13,24 @@ struct ContentView: View {
     var body: some View {
         VStack {
             RoundedButton.init(text: newGameButtonText,
-                               action: { viewModel
-                                    .startNewGame(cardsInTable: viewModel.cardsInTable)
+                               action: { viewModel.startNewGame(cardsInTable: viewModel.cardsInTable)
                                })
-            LazyVGrid(columns: [GridItem(.adaptive(minimum: minimumGridItemSize))]) {
-                ForEach(viewModel.cardsInTable) { card in
-                    CardView(state: card.state,
-                             color: card.content.color,
-                             quantity: card.content.quantity,
-                             fillPattern: card.content.filling,
-                             shape: card.content.shape)
-                        .aspectRatio(cardAspectRatio, contentMode: .fit)
-                        .onTapGesture {
-                        viewModel.choose(card)
-                        }
-                }
-            }
+            AspectVGrid(items: viewModel.cardsInTable,
+                        aspectRatio: cardAspectRatio,
+                        content: { card in
+                            CardView(state: card.state,
+                                     color: card.content.color,
+                                     quantity: card.content.quantity,
+                                     fillPattern: card.content.filling,
+                                     shape: card.content.shape)
+                                .padding(cardPadding)
+                                .onTapGesture {
+                                viewModel.choose(card)
+                                }
+                        })
             RoundedButton.init(text: grabMoreCardsButtonText,
                                action: viewModel.grabThreeNewCards)
-        }.padding()
+        }.padding(.horizontal, viewHorizontalPadding)
     }
 }
 
@@ -64,6 +63,8 @@ struct CardView: View {
 
 fileprivate let minimumGridItemSize: CGFloat = 120
 fileprivate let cardAspectRatio: CGFloat = 5/6
+fileprivate let cardPadding: CGFloat = 5
+fileprivate let viewHorizontalPadding: CGFloat = 30
 fileprivate let newGameButtonText: String = "New Game!"
 fileprivate let grabMoreCardsButtonText: String = "Grab 3 more cards"
 
