@@ -24,6 +24,7 @@
 		C09459CE26D938DF00DDCFA2 /* SetGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09459CD26D938DF00DDCFA2 /* SetGameViewModel.swift */; };
 		C09459D026D938EE00DDCFA2 /* SetGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09459CF26D938EE00DDCFA2 /* SetGame.swift */; };
 		C09459D226D98E0600DDCFA2 /* Diamond.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09459D126D98E0600DDCFA2 /* Diamond.swift */; };
+		C0A06A7A26E17FCA00E85DD4 /* Color+DarkSensitive.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0A06A7926E17FCA00E85DD4 /* Color+DarkSensitive.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		C09459CD26D938DF00DDCFA2 /* SetGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGameViewModel.swift; sourceTree = "<group>"; };
 		C09459CF26D938EE00DDCFA2 /* SetGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SetGame.swift; sourceTree = "<group>"; };
 		C09459D126D98E0600DDCFA2 /* Diamond.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Diamond.swift; sourceTree = "<group>"; };
+		C0A06A7926E17FCA00E85DD4 /* Color+DarkSensitive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+DarkSensitive.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,6 +114,7 @@
 			isa = PBXGroup;
 			children = (
 				C07C8D5426DB21A1007657F1 /* Shape+Fillment.swift */,
+				C0A06A7926E17FCA00E85DD4 /* Color+DarkSensitive.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -243,6 +246,7 @@
 				C09273C226DC4C83009F2FF5 /* Cardify.swift in Sources */,
 				C09273C626DC74FB009F2FF5 /* AspectVGrid.swift in Sources */,
 				C07C8D5926DB2B26007657F1 /* SetGameCardState.swift in Sources */,
+				C0A06A7A26E17FCA00E85DD4 /* Color+DarkSensitive.swift in Sources */,
 				C09459D226D98E0600DDCFA2 /* Diamond.swift in Sources */,
 				C07C8D4E26DB1FC5007657F1 /* SetGameCardProtocol.swift in Sources */,
 				C07C8D4C26DB1FAB007657F1 /* SetGameCardTypes.swift in Sources */,

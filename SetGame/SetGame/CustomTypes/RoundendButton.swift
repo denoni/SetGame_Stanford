@@ -11,8 +11,8 @@ struct RoundedButton: View {
     var text: String
     var action: () -> Void
     var disabled = false
-    
-    // TODO: Make cards dark sensitive
+    var backgroundColor = Color.darkSensitive.black
+    var foregoundColor = Color.darkSensitive.white
     
     var body: some View {
         Button(action: action) {
@@ -20,8 +20,8 @@ struct RoundedButton: View {
                 Text(text)
                     .fontWeight(.semibold)
                     .padding(buttonPadding)
-                    .foregroundColor(Color.white)
-                    .background(Color.black)
+                    .foregroundColor(foregoundColor)
+                    .background(backgroundColor)
                     .cornerRadius(buttonCornerRadius)
                     .opacity(disabled ? 0.3 : 1)
             }
